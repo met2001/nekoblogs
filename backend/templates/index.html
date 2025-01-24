@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/styles/index.css">
+    <title>Profile Index</title>
+</head>
+<body>
+    <header>
+        <ul>
+            <li><a href="/logout">Logout</a></li>
+            <li><a href="/dashboard">Dashboard</a></li>
+            <li><a href="/feed">Feed</a></li>
+        </ul>
+    </header>
+    <main>
+        <div id="left">
+            <h1>Welcome {{ message }}!</h1>
+            <p>{{ err_msg }}</p>
+            <img id="settings_img" width=200 src="{{image}}">
+            <p id="current-user"></p>
+            <p id="logged-in"></p>
+            <p>Site: {{ site_url }}</p>
+            <fieldset>
+                <legend>Post a Blog</legend>
+                
+                <form id="uploadForm" action="/makepost" method="post" enctype="multipart/form-data">
+                    <label for="blog_title">Title:</label>
+                    <input required id="siteInput" type="text" name="blog_title" placeholder="Awesome blog title!" > 
+                    <br><br>
+                    <label for="blog_content">Content:</label>
+                    <textarea required id="blog_content" type="text" name="blog_content" placeholder="type whats going on" cols=65 rows=8> </textarea>
+                    <br>
+                    <br>
+                    <p style="color: red;">{{ blog_status }}</p>
+                    <button type="submit">Post!</button>
+                </form>
+            </fieldset>
+            <br><br>
+            <fieldset>
+                <legend>Settings</legend>
+                
+                <form id="uploadForm" action="/settings" method="post" enctype="multipart/form-data">
+                    <br>
+                    <label for="site_url">Site URL:</label>
+                    <input id="siteInput" type="text" name="site_url" placeholder="{{site_url}}" >
+                    <br><br>
+                    <label for="file">Change Profile Picture:</label>
+                    <input name="pfp" id="file" type="file" accept="image/*">
+                    <br>
+                    <br>
+                    <button type="submit">Save!</button>
+                </form>
+            </fieldset>
+        </div>
+        <div id="right">
+            <h1>Your Posts</h1>
+            <div id="user_posts">
+                {% for post in posts %}
+                
+                <div class="blog-post">
+                <div class="username" style="text-align:center;">
+                    <h3 style="margin-top:0; text-align:center;">{{post.username}}</h3>
+                    <p style="color:grey; margin-bottom:0px;">{{post.to_dict().time}}</p>
+                    <p style="color:grey; margin-bottom:0px;">{{post.to_dict().date}}</p>
+                    <p><a href="/delete/{{post.id}}">[x]</a></p>
+                </div>
+                <div class="content">
+                    <h3 style="margin-top:0;">{{post.title}}</h3>
+                    <p style="margin:0; text-align:left;">{{post.content}}</p>
+                </div>
+                </div>
+                
+            {% endfor %}
+            </div>
+        </div>
+    
+    </main>
+    <footer>
+        &copy mmilk
+    </footer>
+    <script>
+        document.getElementById("uploadForm").addEventListener("submit", function (event) {
+            const fileInput = document.getElementById("file");
+            let siteInput = document.querySelect("#siteInput");
+            if (!fileInput.files || fileInput.files.length === 0 || siteInput.value != "") {
+                event.preventDefault(); // Prevent form submission
+                alert("No changes detected.");
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/styles/index.css">
+    <title>Login Page</title>
+</head>
+<body>
+    <header>
+        <ul>
+            <li><a href="/create_user">Create an Account</a></li>
+            <li><a href="/dashboard">Dashboard</a></li>
+            <li><a href="/feed">Feed</a></li> 
+        </ul>
+    </header>
+    <h1>Login</h1>
+    <div id="warning">
+        <p>{{ alert }}</p>
+    </div>
+
+    <div>
+        <p style="color:red;">{{ message }}</p>
+    </div>
+
+    <form action="login" id="login-form" method="post">
+        <label name="username" for="username">Username:</label>
+        <input name="username" type="text" id="username" required><br><br>
+        
+        <label name="password" for="password">Password:</label>
+        <input name="password" type="password" id="password" required><br><br>
+        
+        <button type="submit" id="submit">Login</button>
+    </form>
+    
+    
+
+    <footer>
+        &copy mmilk
+    </footer>
+</body>
+</html>

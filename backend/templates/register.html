@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/styles/index.css">
+    <title>Register</title>
+</head>
+<body>
+    <header>
+        <ul>
+            <li><a href="/login">Login</a></li>
+            <li><a href="/dashboard">Dashboard</a></li>
+            <li><a href="/feed">Feed</a></li> 
+        </ul>
+    </header>
+    <h1>Register page</h1>
+    <p id="warning">{{ message }}</p>
+    <form action="/create_user" method="post">
+        <input name="username" id="username" type="text" placeholder="username"  required>
+        <br><br>
+        <input name="password" id="password" type="password" placeholder="password" required>
+        <br><br>
+        <input name="confpassword" id="confpassword" type="password" placeholder="retype password" required>
+        <br><br>
+        <input name="email" id="email" type="email" placeholder="email"  required>
+        <br><br>
+        <input name="site_url" id="site_url" type="text" placeholder="site url"  required>
+        <br><br>
+        <button id="submit" type="submit">Submit</button>
+    </form>
+    <footer>
+        &copy mmilk
+    </footer>
+    <script>
+        document.getElementById("submit").addEventListener("click", function(event) {
+            let pass = document.getElementById("password");
+            let confpass = document.getElementById("confpassword");
+            if (pass.value !== confpass.value) {
+                alert("Passwords do not match!");
+                event.preventDefault(); // Prevent form submission
+            }
+        });
+    </script>
+    
+</body>
+</html>

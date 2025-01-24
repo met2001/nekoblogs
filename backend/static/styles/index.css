@@ -1,0 +1,211 @@
+*{
+    box-sizing: border-box;
+}
+html{
+    background-image: url(../assets/nekopattern.png);
+    color: #634c53;
+    font: 11pt "MS PGothic", Tahoma, Verdana;
+    height: 100%;
+}
+body{
+    min-width: 730px;
+    min-height: 100%;
+    background-color: #fff9e6;
+    max-width: 1200px;
+    margin: 0 auto;
+    outline: 2px outset #FFF2CC;
+}
+header{
+    
+    width: 100%;
+    background-image: url(../assets/checkerboard.png), linear-gradient(to bottom, #875f6b,#634c53);
+    background-size: 10px 10px, auto;
+    border-bottom: #FFD0BC 3px ridge;
+}
+#navigation ul{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content:left;
+}
+#navigation li{
+    width: 50%;
+    text-align: center;
+    
+    padding: 30px;
+    display: block;
+    border-radius: 5px;
+    list-style-type: none;
+
+}
+#navigation a{
+    margin: 10px;
+    text-decoration: none;
+    padding: 10px;
+    padding-top: 6px;
+    background: linear-gradient(180deg, #FFF2CC, #FFBBBA);
+    box-shadow: -1.5px -1.5px 1px inset #825044, 0px 0px 0px 2px #FFC09B;
+    text-shadow: 0px -1px #fff;
+    border-top-left-radius: 10px 20px;
+    border-bottom-left-radius: 10px 20px;
+    color: #875f6b;
+    border-top-right-radius: 10px 20px;
+    border-bottom-right-radius: 10px 20px;
+    border: 2px solid #FFBBBA;
+    outline: 1px solid #FFF2CC;
+}
+a{
+    font-weight: bold;
+}
+header a:hover{
+    background-color: aquamarine;
+}
+
+main{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+
+fieldset{
+    width: 500px;
+    border:1px solid #cdd6f4;
+    border-radius: 6px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#settings_img{
+    border-radius: 6px;
+    box-shadow: 3px 3px 10px black;
+}
+.profile{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    min-width: 300px;
+    background: linear-gradient(180deg, #FFF2CC, #FFBBBA);
+    box-shadow: -1.5px -1.5px 1px inset #825044, 0px 0px 0px 2px #FFC09B;
+    text-shadow: 0px -1px #fff;
+    border-top-left-radius: 10px 20px;
+    border-bottom-left-radius: 10px 20px;
+    color: #875f6b;
+    border-top-right-radius: 10px 20px;
+    border-bottom-right-radius: 10px 20px;
+    border: 2px solid #FFBBBA;
+    outline: 1px solid #FFF2CC;
+}
+.pfp{
+    justify-content: center;
+    
+    object-fit: cover;
+}
+.pfp img{
+    
+    padding: 10px;
+    width: 100px; /* Set width */
+    height: 100px; /* Set height */
+    background-size: cover; /* Ensure the image covers the div */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent repeating */
+}
+.info{
+    padding: 10px 0 0 10px;
+    text-align:center;
+}
+.profile:hover{
+    background-color: #cdd6f4;
+    color: #45475a;
+}
+#user-list{
+    max-width: 650px;
+    width: 65%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+#blog-list{
+    max-width: 650px;
+    width: 65%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+section{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+section fieldset{
+    width: auto;
+    
+}
+section #stats{
+    margin-top: 10px;
+    max-width: 300px;
+    width: 35%;
+}
+.profile a{
+    text-decoration: none;
+}
+.proflink{
+    text-decoration: none;
+}
+.blog-post{
+    width: 400px;
+    margin-top: 10px;
+    padding-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    min-width: 300px;
+    background: linear-gradient(180deg, #FFF2CC, #FFBBBA);
+    box-shadow: -1.5px -1.5px 1px inset #825044, 0px 0px 0px 2px #FFC09B;
+    text-shadow: 0px -1px #fff;
+    border-top-left-radius: 10px 20px;
+    border-bottom-left-radius: 10px 20px;
+    color: #875f6b;
+    border-top-right-radius: 10px 20px;
+    border-bottom-right-radius: 10px 20px;
+    border: 2px solid #FFBBBA;
+    outline: 1px solid #FFF2CC;
+}
+#user_posts{
+    max-width: 650px;
+    width: 65%;
+    display: flex;
+    flex-direction: column-reverse;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+}
+#left img{
+    background: linear-gradient(180deg, #FFF2CC, #FFBBBA);
+    box-shadow: -1.5px -1.5px 1px inset #825044, 0px 0px 0px 2px #FFC09B;
+    text-shadow: 0px -1px #fff;
+    border-top-left-radius: 10px 20px;
+    border-bottom-left-radius: 10px 20px;
+    color: #875f6b;
+    border-top-right-radius: 10px 20px;
+    border-bottom-right-radius: 10px 20px;
+    border: 2px solid #FFBBBA;
+    outline: 1px solid #FFF2CC;
+}

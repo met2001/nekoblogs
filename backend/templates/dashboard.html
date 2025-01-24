@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/styles/index.css">
+    <title>Dashboard</title>
+</head>
+<body>
+    <header>
+        
+        
+    </header>
+    <div id="navigation">
+        <ul>
+            <li><a href="/profile">Account</a></li>
+            <li><a href="/dashboard">Dashboard</a></li>
+            <li><a href="/feed">Feed</a></li> 
+        </ul>
+    </div>
+    <main>
+        <section>
+            <div id="user-list"></div>
+            <div id="stats">
+                <fieldset>
+                    <legend>Site Stats</legend>
+                    <p>Total Online: </p>
+                    <p>Total Accounts: <span id="total_users" style="color:red;"></span></p>
+                </fieldset>
+            </div>
+        </section>
+        
+    </main>
+    <footer>
+        &copy mmilk
+    </footer>
+    <script>
+        let user;
+        fetch("http://127.0.0.1:8000/users")
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json(); // Parse the JSON response
+            })
+            .then(users => {
+                const userList = document.getElementById("user-list");
+                
+                // Iterate through the users and display them
+                users.forEach(user => {
+                    let userDiv = document.createElement("div");
+                    
+                    
+                    userDiv.innerHTML = `
+                    
+                    <div class="profile">
+                    <div class="pfp">
+                        <img src="${user.pfp}">
+                    </div>
+                    <div class="info">
+                        <h3 style="margin-top:0;">${user.username}</h3>
+                        <p style="margin:0;">${user.site_url}</p>
+                    </div>
+                    </div>
+                    
+                    
+                    
+                    `
+                    
+                    userList.appendChild(userDiv);
+                });
+                let num_users = document.querySelectorAll(".profile");
+            console.log(num_users);
+            let total_users = document.querySelector("#total_users").textContent = users.length;
+            })
+            .catch(error => {
+                console.error("Error fetching users:", error);
+            });
+            
+    </script>
+</body>
+</html>

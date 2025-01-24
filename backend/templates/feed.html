@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/styles/feed.css">
+    <title>Dashboard</title>
+</head>
+<body>
+    <header>
+        <ul>
+            <li><a href="/profile">Account</a></li>
+            <li><a href="/dashboard">Dashboard</a></li>
+            <li><a href="/feed">Feed</a></li> 
+        </ul>
+        
+    </header>
+    <main>
+        <section>
+            <h2>{{alert}}</h2>
+            <div id="blog-list">
+                
+                {% for post in blogs %}
+                
+                    <div class="blog-post">
+                    <div class="username" style="text-align:center;">
+                        <h3 style="margin-top:0; text-align:center;">{{post.username}}</h3>
+                        <p style="color:grey; margin-bottom:0px;">{{post.to_dict().time}}</p>
+                        <p style="color:grey; margin-bottom:0px;">{{post.to_dict().date}}</p>
+                        
+                    </div>
+                    <div class="content">
+                        <h3 style="margin-top:0;">{{post.title}}</h3>
+                        <p style="margin:0; text-align:left;">{{post.content}}</p>
+                    </div>
+                    </div>
+                    
+                {% endfor %}
+
+            </div>
+            <div id="stats">
+                <fieldset>
+                    <legend>Page Stats</legend>
+                    
+                    <p>Total Blogs: <span id="total_posts" style="color:red;"></span></p>
+                </fieldset>
+            </div>
+        </section>
+        
+    </main>
+    <footer>
+        &copy mmilk
+    </footer>
+    <script>
+        let blogs = document.querySelectorAll(".blog-post");
+        let num_posts = blogs.length;
+        let total = document.querySelector("#total_posts").textContent = num_posts;
+    </script>
+</body>
+</html>

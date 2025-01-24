@@ -1,0 +1,120 @@
+html{
+    background-color: #11111b;
+    color: #cdd6f4;
+    font-family: 'Courier New', Courier, monospace;
+}
+body{
+    background-color: #11111b;
+    max-width: 1000px;
+    margin: 10px auto auto auto;
+}
+header{
+    border-radius: 7px;
+    width: 100%;
+    background-color: #45475a;
+}
+header ul{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content:left;
+}
+header li{
+    width: 50%;
+    text-align: center;
+    background-color: rgb(39, 112, 161);
+    padding: 0px;
+    display: block;
+    border-radius: 5px;
+    list-style-type: none;
+
+}
+header a{
+    background-color: #45475a;
+    text-decoration: none;
+    color: white;
+    border: 1px solid black;
+    display: block;
+    padding: 10px;
+    margin: 0;
+}
+header a:hover{
+    background-color: aquamarine;
+}
+#settings_img{
+    border-radius: 6px;
+    box-shadow: 3px 3px 10px black;
+}
+footer{
+    position:relative;
+    display: block;
+    top:50vh;
+    text-align: center;
+    background-color: #45475a;
+}
+.blog-post{
+    width: 500px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    min-width: 300px;
+    background-color: #45475a;
+    color: #cdd6f4;
+}
+.username{
+    padding: 10px;
+    background-size: cover; /* Ensure the image covers the div */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent repeating */
+}
+
+.content{
+    padding: 10px 0 0 10px;
+    text-align:center;
+    width:100%;
+}
+.blog-post:hover{
+    background-color: #cdd6f4;
+    color: #45475a;
+}
+fieldset{
+    width: 500px;
+    border:1px solid #cdd6f4;
+    border-radius: 6px;
+}
+#user-list{
+    max-width: 650px;
+    width: 65%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+}
+#blog-list{
+    max-width: 650px;
+    width: 65%;
+    display: flex;
+    flex-direction: column-reverse;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+}
+section{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+section fieldset{
+    width: auto;
+    
+}
+section #stats{
+    margin-top: 10px;
+    max-width: 300px;
+    width: 35%;
+}
+.blog-post a{
+    text-decoration: none;
+}
+.proflink{
+    text-decoration: none;
+}
