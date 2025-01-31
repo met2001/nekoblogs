@@ -11,7 +11,7 @@ app = Flask(__name__)
 CORS(app, supports_credentials=True)
 
 # Database setup
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///forum.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URL", "sqlite:///forum.db")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 UPLOAD_FOLDER = os.path.join("static","images","uploads")
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
