@@ -13,7 +13,7 @@ CORS(app, supports_credentials=True)
 # Database setup
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///forum.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-UPLOAD_FOLDER = os.path.join("blog-site","static","images","uploads")
+UPLOAD_FOLDER = os.path.join("static","images","uploads")
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 # Session configuration
 
@@ -223,7 +223,7 @@ def user_lookup(username):
 @app.route("/users", methods=["GET"])
 def total_users():
     users = User.query.all()
-    user_list = [{"username": user.username, "site_url": user.site_url, "pfp": "http://127.0.0.1:8000/"+user.profile_picture} for user in users]
+    user_list = [{"username": user.username, "site_url": user.site_url, "pfp": "https://neko-blogs-a52478cbe33c.herokuapp.com/"+user.profile_picture} for user in users]
     
     return jsonify(user_list)    
     
