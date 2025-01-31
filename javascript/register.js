@@ -1,4 +1,4 @@
-const REG_API = `http://127.0.0.1:8000/create_user`;
+const REG_API = `https://neko-blogs-a52478cbe33c.herokuapp.com/create_user`;
 
 let warn_message = document.querySelector("#warning");
 const button = document.querySelector("#submit");

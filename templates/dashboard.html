@@ -34,7 +34,7 @@
     </footer>
     <script>
         let user;
-        fetch("http://127.0.0.1:8000/users")
+        fetch("https://neko-blogs-a52478cbe33c.herokuapp.com/users")
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`HTTP error! Status: ${response.status}`);

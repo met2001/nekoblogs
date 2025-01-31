@@ -14,7 +14,7 @@ button.addEventListener("click", (event) => {
             password: password_input.value
         };
 
-        fetch("http://127.0.0.1:8000/login", {
+        fetch("https://neko-blogs-a52478cbe33c.herokuapp.com/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

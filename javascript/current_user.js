@@ -1,5 +1,5 @@
 let logged = document.querySelector("#logged-in");
-let login_status = "http://127.0.0.1:8000/";
+let login_status = "https://neko-blogs-a52478cbe33c.herokuapp.com/";
 
 // Function to check login status
 let login_stats = () => {
