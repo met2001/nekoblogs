@@ -13,7 +13,7 @@ CORS(app, supports_credentials=True)
 # Database setup
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///forum.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-UPLOAD_FOLDER = 'blog-site\\backend\\static\\'
+UPLOAD_FOLDER = 'blog-site\\static\\images\\uploads\\'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 # Session configuration
 
@@ -154,9 +154,9 @@ def settings():
             filepath = os.path.join(app.config["UPLOAD_FOLDER"], filename)
             app.logger.info(file)
             file.save(filepath)
-            user.profile_picture = "\\static\\" + filename
+            user.profile_picture = "\\static\\images\\uploads\\" + filename
             db.session.commit()
-            return render_template("index.html",err_msg="Change detected", image="static\\" + filename, message=user.username, site_url=user.site_url,posts=blogs)
+            return render_template("index.html",err_msg="Change detected", image="static\\images\\uploads\\" + filename, message=user.username, site_url=user.site_url,posts=blogs)
         elif not file and site_url:
             user.site_url = site_url
             db.session.commit()
@@ -165,10 +165,10 @@ def settings():
             filename = secure_filename(file.filename)
             filepath = os.path.join(app.config["UPLOAD_FOLDER"], filename)
             file.save(filepath)
-            user.profile_picture = "\\static\\" + filename
+            user.profile_picture = "\\static\\images\\uploads\\" + filename
             user.site_url = site_url
             db.session.commit()
-            return render_template("index.html",err_msg="Change detected", image="static\\" + filename, message=user.username, site_url=user.site_url,posts=blogs)
+            return render_template("index.html",err_msg="Change detected", image="static\\images\\uploads\\" + filename, message=user.username, site_url=user.site_url,posts=blogs)
         
     else:
         return render_template("signin.html", message="Unauthorized")
