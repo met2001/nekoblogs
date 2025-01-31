@@ -13,7 +13,7 @@ CORS(app, supports_credentials=True)
 # Database setup
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///forum.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-UPLOAD_FOLDER = 'blog-site\\static\\images\\uploads\\'
+UPLOAD_FOLDER = os.path.join("blog-site","static","images","uploads")
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 # Session configuration
 
@@ -242,4 +242,4 @@ def delete_post(post_id):
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=8000)
+    app.run(debug=True)
