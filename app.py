@@ -6,6 +6,7 @@ import secrets
 from datetime import timedelta, datetime
 from werkzeug.utils import secure_filename
 from flask_bcrypt import Bcrypt
+from sqlalchemy import inspect
 import os
 
 # Initialize Flask app
@@ -68,7 +69,8 @@ class Blog(db.Model):
         }
 
 with app.app_context():
-    if not db.engine.has_table("User") and not db.engine.has_table('Blog'):  # Check if 'user' table exists
+    inspector = inspect(db.engine)
+    if not inspector.has_table("user") and not inspector.has_table("blog"):
         db.create_all()
 
 # Routes
