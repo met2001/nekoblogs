@@ -149,6 +149,7 @@ fieldset{
     width: 65%;
     display: flex;
     flex-wrap: wrap;
+    flex-direction: column-reverse;
     justify-content: space-evenly;
 }
 section{
