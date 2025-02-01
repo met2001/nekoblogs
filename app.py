@@ -67,9 +67,9 @@ class Blog(db.Model):
             "content": self.content
         }
 
-# Create database tables
 with app.app_context():
-    db.create_all()
+    if not db.engine.has_table("user"):  # Check if 'user' table exists
+        db.create_all()
 
 # Routes
 @app.route("/")
