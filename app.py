@@ -68,7 +68,7 @@ class Blog(db.Model):
         }
 
 with app.app_context():
-    if not db.engine.has_table("user"):  # Check if 'user' table exists
+    if not db.engine.has_table("User") and not db.engine.has_table('Blog'):  # Check if 'user' table exists
         db.create_all()
 
 # Routes
