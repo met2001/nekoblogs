@@ -1,0 +1,141 @@
+:root{
+    --accentColor: rgb(112, 111, 111);
+    --textColor: white;
+    --backgroundColor: rgb(37, 39, 44);
+    --hoverText: black;
+}
+@font-face {
+    font-family: rainyhearts;
+    src: url(../assets/rainyhearts.ttf);
+}
+
+html{
+    background-color: var(--backgroundColor);
+    color: var(--textColor);
+    font-family: rainyhearts;
+}
+body{
+    
+    height: 100vh;
+    
+    margin: 0 auto;
+}
+header{
+    width: 100%;
+    height: 180px;
+    border-bottom: 1px solid var(--accentColor);
+    background-image: linear-gradient(to right, #ccc 1px, transparent 1px),
+    linear-gradient(to bottom, #ccc 1px, transparent 1px);
+    background-size: 50px 50px;
+}
+nav{
+    
+    max-width: 1000px;
+    width: 1000px;
+    min-width: 800px;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+nav ul{
+    margin: 0;
+    display: flex;
+    padding: 0;
+    
+}
+nav li{
+    list-style-type: none;
+    
+    line-height: 30px;
+    text-align: center;
+    outline: 1px solid var(--accentColor);
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+nav ul li a{
+    display: block;
+    text-decoration: none;
+    padding: 5px;
+    line-height: 30px;
+    color: white;
+}
+nav ul li a:hover{
+    background-color: var(--accentColor);
+    color: var(--hoverText);
+}
+#selected{
+    
+    background-color: var(--accentColor);
+    color: var(--hoverText);
+}
+main{
+    max-width: 1000px;
+    width: 1000px;
+    min-width: 800px;
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+    height: 100%;
+}
+.content{
+    width: 85%;
+    border-top: 1px solid var(--accentColor);
+    border-left: 1px solid var(--accentColor);
+    border-right: 1px solid var(--accentColor);
+    
+}
+.contentcontainer{
+    border-bottom: 1px solid var(--accentColor);
+    padding-left: 10px;
+    
+    display: flex;
+    flex-direction: row;
+}
+.leftcontent{
+    border-right: 1px solid var(--accentColor);
+    text-align: center;
+    padding-right: 10px;
+}
+.leftcontent img{
+    width: 80px;
+}
+.rightcontent{
+    padding: 10px;
+}
+.usercontainer{
+    border: 1px solid var(--accentColor);
+    width: 15%;
+    border-radius: 6px;
+    padding: 0;
+    text-align: center;
+    margin-left: 20px;
+}
+.usercontainer h3{
+    text-align: left;
+    margin-left: 6px;
+}
+.profile{
+    margin: 0 auto;
+    margin-bottom: 4px;
+    display: flex;
+    flex-direction: row;
+    
+    padding-left: 6px;
+    padding: 4px;
+    
+}
+.profile:hover{
+    background-color: var(--accentColor);
+}
+.pfp img{
+    border-radius: 50%;
+    width: 50px;
+}
+.info{
+    padding: 5px;
+    width: 100%;
+}
+.info p{
+    position: relative;
+    margin: 0;
+    top: 25%;
+}
