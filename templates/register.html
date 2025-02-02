@@ -3,35 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/styles/index.css">
+    <link rel="stylesheet" href="../static/styles/login.css">
     <title>Register</title>
 </head>
 <body>
-    <header>
+    
+    <nav>
         <ul>
-            <li><a href="/login">Login</a></li>
-            <li><a href="/dashboard">Dashboard</a></li>
+            <li><a href="/dashboard">Home</a></li>
             <li><a href="/feed">Feed</a></li> 
+            <li><a href="/login">Login</a></li>
+ 
         </ul>
-    </header>
-    <h1>Register page</h1>
-    <p id="warning">{{ message }}</p>
-    <form action="/create_user" method="post">
-        <input name="username" id="username" type="text" placeholder="username"  required>
-        <br><br>
-        <input name="password" id="password" type="password" placeholder="password" required>
-        <br><br>
-        <input name="confpassword" id="confpassword" type="password" placeholder="retype password" required>
-        <br><br>
-        <input name="email" id="email" type="email" placeholder="email"  required>
-        <br><br>
-        <input name="site_url" id="site_url" type="text" placeholder="site url"  required>
-        <br><br>
-        <button id="submit" type="submit">Submit</button>
-    </form>
-    <footer>
-        &copy mmilk
-    </footer>
+    </nav>
+    <main>
+        <section class="content">
+            <h1>Register</h1>
+            <form action="/create_user" method="post">
+                <label for="username">Username:</label>
+                <input name="username" id="username" type="text" placeholder="username"  required>
+                <br><br>
+                <label for="password">Password:</label>
+                <input name="password" id="password" type="password" placeholder="password" required>
+                <br><br>
+                <label for="confpassword">Retype Password:</label>
+                <input name="confpassword" id="confpassword" type="password" placeholder="retype password" required>
+                <br><br>
+                <label for="username">Email:</label>
+                <input name="email" id="email" type="email" placeholder="email"  required>
+                <br><br>
+                <label for="site_url">Site:</label>
+                <input name="site_url" id="site_url" type="text" placeholder="site url"  required>
+                <br><br>
+                <p style="color: red;">{{message}}</p>
+                <button id="submit" type="submit">Submit</button>
+            </form>
+            
+
+        </section>
+        <section class="usercontainer">
+            <h3>Users</h3>
+            <div id="user-list">
+                
+            </div>
+        </section> 
+    </main>
+
+
+    <footer></footer>
     <script>
         document.getElementById("submit").addEventListener("click", function(event) {
             let pass = document.getElementById("password");
@@ -41,6 +60,45 @@
                 event.preventDefault(); // Prevent form submission
             }
         });
+        let user;
+        fetch("https://neko-blogs-a52478cbe33c.herokuapp.com/users")
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json(); // Parse the JSON response
+            })
+            .then(users => {
+                const userList = document.getElementById("user-list");
+                
+                // Iterate through the users and display them
+                users.forEach(user => {
+                    let userDiv = document.createElement("div");
+                    
+                    
+                    userDiv.innerHTML = `
+                    
+                    <div class="profile">
+                    <div class="pfp">
+                        <img src="${user.pfp}">
+                    </div>
+                    <div class="info">
+                        <p style="margin-top:0;">${user.username}</p>
+                    </div>
+                    </div>
+                    
+                    
+                    
+                    `
+                    
+                    userList.appendChild(userDiv);
+                });
+            
+            })
+            .catch(error => {
+                console.error("Error fetching users:", error);
+            });
+            
     </script>
     
 </body>

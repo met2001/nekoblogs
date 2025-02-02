@@ -81,7 +81,16 @@ main{
     border-top: 1px solid var(--accentColor);
     border-left: 1px solid var(--accentColor);
     border-right: 1px solid var(--accentColor);
+    text-align: center;
     
+}
+.content img{
+    border-radius: 50%;
+    width: 250px;
+    border: 3px solid var(--accentColor);
+}
+#uploadDiv{
+    margin: 0 auto;
 }
 .contentcontainer{
     border-bottom: 1px solid var(--accentColor);
@@ -138,4 +147,26 @@ main{
     position: relative;
     margin: 0;
     top: 25%;
+}
+.user-post{
+    display: flex;
+    flex-direction: column-reverse;
+}
+.post{
+    padding-bottom: 5px;
+    border-top: 1px solid var(--accentColor);
+    border-bottom: 1px solid var(--accentColor);
+}
+.post h3{
+    margin-top: 0;
+    text-align: center;
+}
+.post a{
+    color: white;
+}
+.post p{
+    margin-bottom: 0;
+}
+.post:hover{
+    background-color: var(--accentColor);
 }

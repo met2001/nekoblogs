@@ -74,10 +74,16 @@ main{
     display: flex;
     flex-direction: row;
     margin: 0 auto;
+    
+    
     height: 100%;
+}
+code{
+    font-family: monospace;
 }
 .content{
     width: 85%;
+    
     border-top: 1px solid var(--accentColor);
     border-left: 1px solid var(--accentColor);
     border-right: 1px solid var(--accentColor);
@@ -85,20 +91,6 @@ main{
 }
 .contentcontainer{
     border-bottom: 1px solid var(--accentColor);
-    padding-left: 10px;
-    
-    display: flex;
-    flex-direction: row;
-}
-.leftcontent{
-    border-right: 1px solid var(--accentColor);
-    text-align: center;
-    padding-right: 10px;
-}
-.leftcontent img{
-    width: 80px;
-}
-.rightcontent{
     padding: 10px;
 }
 .usercontainer{

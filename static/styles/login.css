@@ -78,6 +78,7 @@ main{
 }
 .content{
     width: 85%;
+    text-align: center;
     border-top: 1px solid var(--accentColor);
     border-left: 1px solid var(--accentColor);
     border-right: 1px solid var(--accentColor);
@@ -138,4 +139,18 @@ main{
     position: relative;
     margin: 0;
     top: 25%;
+}
+form{
+    width: 300px;
+    margin: 0 auto;
+}
+form label{
+    display: inline-block;
+    text-align: right;
+    float: left;
+}
+form input{
+    display: inline-block;
+    text-align: left;
+    float: right;
 }

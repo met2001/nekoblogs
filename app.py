@@ -62,6 +62,7 @@ class Blog(db.Model):
     def to_dict(self):
         return {
             "username": self.username,
+            "pfp": User.query.filter_by(username=self.username).first().profile_picture,
             "title": self.title,
             "date": self.timestamp.strftime('(%Y/%m/%d)'),
             "time": self.timestamp.strftime('(%H:%M)'),

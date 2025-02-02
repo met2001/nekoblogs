@@ -3,28 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/styles/index.css">
-    <title>Profile Index</title>
+    <link rel="stylesheet" href="../static/styles/profile.css">
+    <title>Feed</title>
 </head>
 <body>
-    <header>
+    
+    <nav>
         <ul>
+            <li><a href="/dashboard">Home</a></li>
+            <li><a href="/feed">Feed</a></li> 
+            <li id="selected"><a href="/profile">Profile</a></li>
             <li><a href="/logout">Logout</a></li>
-            <li><a href="/dashboard">Dashboard</a></li>
-            <li><a href="/feed">Feed</a></li>
         </ul>
-    </header>
+    </nav>
     <main>
-        <div id="left">
-            <h1>Welcome {{ message }}!</h1>
-            <p>{{ err_msg }}</p>
-            <img id="settings_img" width=200 src="{{image}}">
-            <p id="current-user"></p>
-            <p id="logged-in"></p>
-            <p>Site: {{ site_url }}</p>
-            <fieldset>
-                <legend>Post a Blog</legend>
+        <section class="content">
+            <h1>{{ message }}</h1>
+            <img src={{image}}>
+            <p>{{err_msg}}</p>
+            
                 
+            <div id="uploadDiv">
+                <h2>Make a Post</h2>
                 <form id="uploadForm" action="/makepost" method="post" enctype="multipart/form-data">
                     <label for="blog_title">Title:</label>
                     <input required id="siteInput" type="text" name="blog_title" placeholder="Awesome blog title!" > 
@@ -36,11 +36,10 @@
                     <p style="color: red;">{{ blog_status }}</p>
                     <button type="submit">Post!</button>
                 </form>
-            </fieldset>
-            <br><br>
-            <fieldset>
-                <legend>Settings</legend>
+            </div>   
+            
                 
+                <h2>Change Settings</h2>
                 <form id="uploadForm" action="/settings" method="post" enctype="multipart/form-data">
                     <br>
                     <label for="site_url">Site URL:</label>
@@ -52,43 +51,29 @@
                     <br>
                     <button type="submit">Save!</button>
                 </form>
-            </fieldset>
-        </div>
-        <div id="right">
-            <h1>Your Posts</h1>
-            <div id="user_posts">
-                {% for post in posts %}
+              
+            
+
+        </section>
+
+        <section class="usercontainer">
+            <h3 style="text-align:center;">Manage Posts</h3>
+            {% for post in posts %}
                 
-                <div class="blog-post">
-                <div class="username" style="text-align:center;">
-                    <h3 style="margin-top:0; text-align:center;">{{post.username}}</h3>
-                    <p style="color:grey; margin-bottom:0px;">{{post.to_dict().time}}</p>
-                    <p style="color:grey; margin-bottom:0px;">{{post.to_dict().date}}</p>
-                    <p><a href="/delete/{{post.id}}">[x]</a></p>
+            <div class="user-post">
+                
+                <div class="post">
+                    <h3>{{post.title}}</h3>
+                    <p><a href="/delete/{{post.id}}">[delete]</a></p>
                 </div>
-                <div class="content">
-                    <h3 style="margin-top:0;">{{post.title}}</h3>
-                    <p style="margin:0; text-align:left;">{{post.content}}</p>
-                </div>
-                </div>
+            </div>
                 
             {% endfor %}
-            </div>
-        </div>
-    
+        </section> 
     </main>
-    <footer>
-        &copy mmilk
-    </footer>
-    <script>
-        document.getElementById("uploadForm").addEventListener("submit", function (event) {
-            const fileInput = document.getElementById("file");
-            let siteInput = document.querySelect("#siteInput");
-            if (!fileInput.files || fileInput.files.length === 0 || siteInput.value != "") {
-                event.preventDefault(); // Prevent form submission
-                alert("No changes detected.");
-            }
-        });
-    </script>
+
+
+    
+    
 </body>
 </html>

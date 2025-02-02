@@ -3,40 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/styles/index.css">
-    <title>Login Page</title>
+    <link rel="stylesheet" href="../static/styles/login.css">
+    <title>Login</title>
 </head>
 <body>
-    <header>
+    
+    <nav>
         <ul>
-            <li><a href="/create_user">Create an Account</a></li>
-            <li><a href="/dashboard">Dashboard</a></li>
+            <li><a href="/dashboard">Home</a></li>
             <li><a href="/feed">Feed</a></li> 
+            <li><a href="/create_user">Create an Account</a></li>
         </ul>
-    </header>
-    <h1>Login</h1>
-    <div id="warning">
-        <p>{{ alert }}</p>
-    </div>
+    </nav>
+    <main>
+        <section class="content">
+            <h1>Sign in</h1>
+            <p>{{alert}}</p>
+            
+            <form action="login" id="login-form" method="post">
+                <label name="username" for="username">Username:</label>
+                <input name="username" type="text" id="username" required><br><br>
+                
+                <label name="password" for="password">Password:</label>
+                <input name="password" type="password" id="password" required><br><br>
+                
+                <button type="submit" id="submit">Login</button>
+            </form>
+            <p style="color: red;">{{message}}</p>
+        </section>
+        <section class="usercontainer">
+            <h3>Users</h3>
+            <div id="user-list">
+                
+            </div>
+        </section> 
+    </main>
 
-    <div>
-        <p style="color:red;">{{ message }}</p>
-    </div>
 
-    <form action="login" id="login-form" method="post">
-        <label name="username" for="username">Username:</label>
-        <input name="username" type="text" id="username" required><br><br>
-        
-        <label name="password" for="password">Password:</label>
-        <input name="password" type="password" id="password" required><br><br>
-        
-        <button type="submit" id="submit">Login</button>
-    </form>
-    
-    
-
-    <footer>
-        &copy mmilk
-    </footer>
+    <footer></footer>
+    <script>
+        let user;
+        fetch("https://neko-blogs-a52478cbe33c.herokuapp.com/users")
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json(); // Parse the JSON response
+            })
+            .then(users => {
+                const userList = document.getElementById("user-list");
+                
+                // Iterate through the users and display them
+                users.forEach(user => {
+                    let userDiv = document.createElement("div");
+                    
+                    
+                    userDiv.innerHTML = `
+                    
+                    <div class="profile">
+                    <div class="pfp">
+                        <img src="${user.pfp}">
+                    </div>
+                    <div class="info">
+                        <p style="margin-top:0;">${user.username}</p>
+                    </div>
+                    </div>
+                    
+                    
+                    
+                    `
+                    
+                    userList.appendChild(userDiv);
+                });
+            
+            })
+            .catch(error => {
+                console.error("Error fetching users:", error);
+            });
+            
+    </script>
 </body>
 </html>

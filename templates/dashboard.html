@@ -3,35 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/styles/index.css">
+    <link rel="stylesheet" href="../static/styles/dash.css">
     <title>Dashboard</title>
 </head>
 <body>
-    <header>
-        <ul>
-            <li><a href="/profile">Account</a></li>
-            <li><a href="/dashboard">Dashboard</a></li>
-            <li><a href="/feed">Feed</a></li> 
-        </ul>
-        
-    </header>
     
+    <nav>
+        <ul>
+            <li id="selected"><a href="/dashboard">Home</a></li>
+            <li><a href="/feed">Feed</a></li> 
+            <li><a href="/profile">Profile</a></li>
+ 
+        </ul>
+    </nav>
     <main>
-        <section>
-            <div id="user-list"></div>
-            <div id="stats">
-                <fieldset>
-                    <legend>Site Stats</legend>
-                    
-                    <p>Total Accounts: <span id="total_users" style="color:red;"></span></p>
-                </fieldset>
+        <section class="content">
+            <div class="contentcontainer">
+                <h1>About this Project</h1>
+                <p>Welcome to Neko Blogs, a platform designed to simplify the way you create, manage, and share your thoughts through microblogging. Our mission is to empower individuals to effortlessly maintain a personal blog without the hassle of manually editing HTML or relying on static site generators.</p>
+                <p>With Neko Blogs, you can easily create and manage your blog posts directly through your account. But thats not all—weve built a powerful API that allows you to seamlessly integrate your blog data into your personal website. Simply use the API to fetch your blog content and display it dynamically, ensuring your site stays up-to-date without ever touching a line of code.</p>
+                <p>Whether you're a developer or someone wanting to spread whats on your mind  Neko Blogs has the tools to do so.</p>
             </div>
+            <div class="contentcontainer">
+                <h1>Documentation</h1>
+                <p>To display blog posts on your personal website, use the /user/<username> endpoint to fetch the user's blog data. <br>For example:</p>
+                <div style="border-radius:6px; background-color:rgb(20, 22, 36);">
+                    <pre><code>
+                        fetch('https://www.nekoblogs.org/user/johndoe')
+                            .then(response => response.json())
+                            .then(data => {
+                            console.log(data.user); // User details
+                            console.log(data.blogs); // List of blog posts
+                        });
+                    </code></pre>
+                </div>
+                <p>Example of API output:</p>
+                <div style="border-radius:6px; background-color:rgb(20, 22, 36);">
+                    <pre><code>
+                        {
+                            "blogs": [
+                              {
+                                "content": "Hello World!",
+                                "date": "(2025/02/01)",
+                                "time": "(07:03)",
+                                "title": "This is my blog",
+                                "username": "johndoe"
+                              }
+                            ],
+                            "user": {
+                              "email": "johndoe@gmail.com",
+                              "id": 1,
+                              "site_url": "None",
+                              "username": "johndoe"
+                            }
+                          }
+                    </code></pre>
+                </div>
+                <p>If you have any questions on how to get this running please contact me on discord.</p>
+            </div>
+            <div class="contentcontainer">
+                <h3>Change Log</h3>
+                <ul>
+                    <li>[1 Feb, 2025] Created a new layout of the site and added documentation</li>
+                    <li>[31 Jan, 2025] Added a new domain for the site</li>
+                    <li>[24 Jan, 2025] Finished basic functionality of the backend</li>
+                </ul>
+            </div>
+            
+
         </section>
-        
+        <section class="usercontainer">
+            <h3>Users</h3>
+            <div id="user-list">
+                
+            </div>
+        </section> 
     </main>
-    <footer>
-        &copy mmilk
-    </footer>
+
+
+    <footer></footer>
     <script>
         let user;
         fetch("https://neko-blogs-a52478cbe33c.herokuapp.com/users")
@@ -56,8 +106,7 @@
                         <img src="${user.pfp}">
                     </div>
                     <div class="info">
-                        <h3 style="margin-top:0;">${user.username}</h3>
-                        <p style="margin:0;">${user.site_url}</p>
+                        <p style="margin-top:0;">${user.username}</p>
                     </div>
                     </div>
                     
@@ -67,9 +116,7 @@
                     
                     userList.appendChild(userDiv);
                 });
-                let num_users = document.querySelectorAll(".profile");
-            console.log(num_users);
-            let total_users = document.querySelector("#total_users").textContent = users.length;
+            
             })
             .catch(error => {
                 console.error("Error fetching users:", error);
