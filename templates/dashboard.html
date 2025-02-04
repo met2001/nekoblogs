@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/styles/dash.css">
+    
     <title>Dashboard</title>
 </head>
 <body>
@@ -58,7 +59,7 @@
                             }
                           }
                     </code></pre>
-                    
+
                 </div>
                 <p>If you have any questions on how to get this running please contact me on discord.</p>
             </div>
@@ -102,16 +103,18 @@
                     
                     
                     userDiv.innerHTML = `
-                    
+                    <a style="color:white; text-decoration:none;" href="${user.site_url}">
                     <div class="profile">
+                    
                     <div class="pfp">
                         <img src="${user.pfp}">
                     </div>
                     <div class="info">
                         <p style="margin-top:0;">${user.username}</p>
                     </div>
-                    </div>
                     
+                    </div>
+                    </a>
                     
                     
                     `
